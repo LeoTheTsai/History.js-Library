@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>History Library Example</title>
+
+  <!------- Loading JS scripts ------->
+  <!-- When loading JS scripts, considerations should be made regarding when
+          the DOM is being loaded, and when different scripts 
+          depend on each other. Below are examples of a few different ways to load the scripts.
+
+      -->
+
+  <!-- Load any CSS before the JS in case you need to access styles in your scripts. -->
+  <!-- <link rel="stylesheet" type="text/css" href="someStylesheet.css"> -->
+
+  <!-- If you don't use either 'async' or 'defer', the HTML parsing/DOM loading is blocked until the script is downloaded and executed. -->
+  <!-- Since it is the top script on the page, it will block 
+        before loading everything under it (including the <body>).  -->
+
+  <script defer type="text/javascript" src='History.js'></script>
+  <link rel="stylesheet" type="text/css" href="History.css">
+
+  <script defer type="text/javascript" src='example.js'></script>
+  <link rel="stylesheet" type="text/css" href="example.css">
+</head>
+
+<body>
+  <button class = "Back" onclick="location.href = 'index.html';">Back</button>
+  <div class="scroll"></div>
+  <div class="body">
+    <h1 class="title">History.js Examples</h1>
+    <div id='createObject' class="feature">
+      <h2>Initialization</h2>
+      <div class='description'>
+        We first call the new history object to create our library object
+        (note that the first parameter takes in the start year of the bar,
+        the second parameter takes in the end year of the bar,
+        the third parameter takes in the desired width for the SVG object,
+        forth parameter takes in the desired height for the SVG object,
+        the fifth parameter takes in a tag (class, id) to append the history object with,
+        the sixth parameter takes in the direction the user wants for the bar ('vertical', 'horizontal'),
+        the last parameter takes in the side the user want for the bar ('left', 'right', 'both' for the vertical and
+        'up', 'down', 'both' for the horizontal).
+      </div>
+      <div class='code'>
+        <span>//Create history object</span><br>
+        <span>const h = new History(2010, 2023, 400, 500, '.featureOneExampleLeft',"horizontal", 'both')</span>
+      </div>
+    </div>
+    <div id='featureOne' class="feature">
+      <h2>createNonAnimatedClickHistory()</h2>
+      <div class='description'>
+        The first example is creating a historical event using createNonAnimatedClickHistory(includeYear, events, barLength),
+        where includeYear is a boolean value indicating whether the user want to include the starting year and ending year
+        define when creating the History obejct. The events is a list of events containing their year, name, and the description
+        (ex: {year: ..., name: ..., description: ...}). This method will create a history timeline that is not animated but the 
+        events for each year is click to show. To see the events, simply click on the year for that event, then the 
+        events will show up.
+      </div>
+      <h3>Data to use for the list of events</h3>
+      <div class='code'>
+        const events1 = [ <br>
+        {year: '2011',name: "Community", description: "Raise 10000k for youth during this year."},<br>
+        {year: '2017',name:'BreakThrough', description:"nothing"}, <br>
+        {year: '2020',name:"Environment",description:"Help the planet by planting 10000 trees"}<br>
+        ]
+      </div>
+      <h3>Code to create the history events</h3><br>
+      <div class="description">Creating history object with starting year = 2010, ending year = 2023, width = 800
+        height = 500, selector = '.featureOneExample', direction = "vertical", side = "both". 
+        and create the createNonAnimatedClickHistory with includeYear = true, and a list of events specified above,
+        and the barLength = 50.
+      </div>
+      <div class='code'>
+        <span>const h1 = new History(2010, 2023, 800, 500, '.featureOneExample',"vertical", 'both')</span><br>
+        <span>h1.createNonAnimatedClickHistory(true, events1, 50)</span>
+      </div>
+      <div class='featureOneExample'></div>
+    </div>
+    <div id='featureTwo' class="feature">
+      <h2>createNonAnimatedNonClickHistory()</h2>
+      <div class='description'>
+        The Second example is creating a historical event using createNonAnimatedNonClickHistory(includeYear, events, barLength),
+        where includeYear is a boolean value indicating whether the user want to include the starting year and ending year
+        define when creating the History obejct. The events is a list of events containing their year, name, and the description
+        (ex: {year: ..., name: ..., description: ...}). This method will create a history timeline that is not animated and the 
+        events for each year is not clickable.
+      </div>
+      <h3>Data to use for the list of events</h3>
+      <div class='code'>
+        const events2 = [ <br>
+        {year: '2011',name: "mile", description: null}, <br>
+        {year: '2017',name:'BreakThrough', description:"Research breakthrough, found cure for everything"}, <br>
+        {year: '2020',name:"GiveBack",description:"Give back the community by doing events"}<br>
+        ]
+      </div>
+      <h3>Code to create the history events</h3><br>
+      <div class="description">Creating history object with starting year = 2010, ending year = 2023, width = 800
+        height = 300, selector = '.featureTwoExample', direction = "horizontal", side = "up". 
+        and create the createNonAnimatedNonClickHistory with includeYear = true, and a list of events specified above,
+        and the barLength = 50.
+      </div>
+      <div class='code'>
+        <span>const h2 = new History(2010, 2023, 800, 300, '.featureTwoExample',"horizontal", 'up')</span><br>
+        <span>h2.createNonAnimatedNonClickHistory(true, events2, 60)</span>
+      </div>
+      <div class='featureTwoExample'></div>
+    </div>
+    <div id='featureThree' class="feature">
+      <h2>createAnimatedClickHistory()</h2>
+      <div class='description'>
+        The third example is creating a historical event using createAnimatedClickHistory(includeYear, events, barLength),
+        where includeYear is a boolean value indicating whether the user want to include the starting year and ending year
+        define when creating the History obejct. The events is a list of events containing their year, name, and the description
+        (ex: {year: ..., name: ..., description: ...}). This method will create a history timeline that is animated and the 
+        events for each year is click to show. To see the events, simply click on the year for that event, then the 
+        events will show up.
+      </div>
+      <h3>Data to use for the list of events</h3>
+      <div class='code'>
+        const events3 = [ <br>
+        {year: '2005',name: "First Merger", description: "Fail"}, <br>
+        {year: '2007',name:'Second Merger', description:"Succesfully merge 10B"}, <br>
+        {year: '2010',name:"Expand",description:"Company expand, opening at 10 more locations"},<br>
+        {year: '2016',name:'Close', description:"Company closed"}, <br>
+        ]
+      </div>
+      <h3>Code to create the history events</h3><br>
+      <div class="description">Creating history object with starting year = 2000, ending year = 2019, width = 800
+        height = 800, selector = '.featureThreeExample', direction = "vertical", side = "left". 
+        and create the createAnimatedClickHistory with includeYear = true, and a list of events specified above,
+        and the barLength = 70.
+      </div>
+      <div class='code'>
+        <span>const h3 = new History(2000, 2019, 800, 800, '.featureThreeExample', "vertical", 'left')</span><br>
+        <span>h3.createAnimatedClickHistory(true, events3, 70)</span>
+      </div>
+      <div class='featureThreeExample'></div>
+    </div>
+    <div id='featureFour' class="feature">
+      <h2>createAnimatedNonClickHistory()</h2>
+      <div class='description'>
+        The fourth example is creating a historical event using createAnimatedNonClickHistory(includeYear, events, barLength),
+        where includeYear is a boolean value indicating whether the user want to include the starting year and ending year
+        define when creating the History obejct. The events is a list of events containing their year, name, and the description
+        (ex: {year: ..., name: ..., description: ...}). This method will create a history timeline that is animated but the 
+        events for each year is not clickable.
+      </div>
+      <h3>Data to use for the list of events</h3>
+      <div class='code'>
+        const events4 = [ <br>
+        {year: '1000',name: "Weapon breakthrough", description: "Found Stone to be a lethal weapon."}, <br>
+        {year: '1001',name:'Currency', description:"Using seashell as a major currency."}<br>
+        ]
+      </div>
+      <h3>Code to create the history events</h3><br>
+      <div class="description">Creating history object with starting year = 1000, ending year = 1001, width = 800
+        height = 1000, selector = '.featureFourExample', direction = "horizontal", side = "down". 
+        and create the createAnimatedNonClickHistory with includeYear = true, and a list of events specified above,
+        and the barLength = 70.
+      </div>
+      <div class='code'>
+        <span>const h4 = new History(1000, 1001, 800, 1000, '.featureFourExample', "horizontal", 'down')</span><br>
+        <span>h4.createAnimatedNonClickHistory(true, events4, 100)</span>
+      </div>
+      <div class='featureFourExample'></div>
+    </div>
+
+    <div id='featureFive' class="feature">
+      <h2>createStep()</h2>
+      <div class='description'>
+        The fifth example is to create a step bar event, call createStep(num, list), 
+        where num is the number of the step the user wants to include, and the list is a 
+        list of HTML collections. The collection can be created using a document or simply a 
+        string of collections. In the collection, the element must be using
+        document.createElementNS() with first parameter as "http://www.w3.org/1999/xhtml" and 
+        second parameter is the HTML tag. If in string form, then inside the tag need to include 
+        xmlns="http://www.w3.org/1999/xhtml" as one of the attributes. (Examples below) (In the list,
+         each element represent views that will show up when the user chooses the step) (Example provided
+          below). Note that in addStepEvents, it does not support side = 'both' in both vertical and 
+          horizontal. To view the page content, click the circle on the bar to direct to each page view.
+      </div>
+      <h3>HTML Collection Data</h3>
+      <div class = 'code'>
+        <span>const firstStep = document.createElementNS("http://www.w3.org/1999/xhtml",'div')</span><br>
+        <span>const firstStepHeader = document.createElementNS("http://www.w3.org/1999/xhtml",'h3')</span><br>
+        <span>firstStepHeader.textContent = 'Fill out your personal information'</span><br>
+        <span>const firstStepform = document.createElementNS("http://www.w3.org/1999/xhtml",'form')</span><br>
+        <span>firstStepform.setAttribute('class', 'firstPageForm')</span><br>
+        <span>const firstInput = document.createElementNS("http://www.w3.org/1999/xhtml",'input')</span><br>
+        <span>firstInput.setAttribute('placeholder', 'First Name')</span><br>
+        <span>const secondInput = document.createElementNS("http://www.w3.org/1999/xhtml",'input')</span><br>
+        <span>secondInput.setAttribute('placeholder', 'Last Name')</span><br>
+        <span>const submitButton = document.createElementNS("http://www.w3.org/1999/xhtml",'button')</span><br>
+        <span>submitButton.textContent = 'Enter'</span><br>
+        <span>firstStepform.appendChild(firstInput)</span><br>
+        <span>firstStepform.appendChild(secondInput)</span><br>
+        <span>firstStepform.appendChild(submitButton)</span><br>
+        <span>firstStepform.addEventListener('submit', (e)=>{</span><br>
+        <span>    e.preventDefault()</span><br>
+        <span>    alert('First Name:' + firstInput.value + " Last Name:" + secondInput.value)</span><br>
+        <span>})</span><br>
+        <span>firstStep.appendChild(firstStepHeader)</span><br>
+        <span>firstStep.appendChild(firstStepform)</span><br>
+        <span>const secondStep = document.createElementNS("http://www.w3.org/1999/xhtml",'div')</span><br>
+        <span>const secondStepHeader = document.createElementNS("http://www.w3.org/1999/xhtml",'h3')</span><br>
+        <span>secondStepHeader.textContent = "Read and Click to agree the terms and services agreement"</span><br>
+        <span>const secondStepContent = document.createElementNS("http://www.w3.org/1999/xhtml",'div')</span><br>
+        <span>secondStepContent.textContent = "This Agreement is governed by and will be construed in" + 
+          "accordance with the laws of the State of (your state), and the courts of (your state)" +
+          "shall be the exclusive forum"</span><br>
+        <span>const secondStepButton = document.createElementNS("http://www.w3.org/1999/xhtml",'input')</span><br>
+        <span>secondStepButton.setAttribute('type', 'checkbox')</span><br>
+        <span>secondStep.appendChild(secondStepHeader)</span><br>
+        <span>secondStep.appendChild(secondStepContent)</span><br>
+        <span>secondStep.appendChild(secondStepButton)</span><br>
+        <span>const thirStep = '< div xmlns="http://www.w3.org/1999/xhtml">You have completed< /div>'</span><br>
+        <span>const l = [firstStep, secondStep, thirStep]</span>
+      </div>
+      <h3>Code to create</h3><br>
+      <div class="description">Creating history object with starting year = 2010, ending year = 2023, width = 800
+        height = 500, selector = '.featureFiveExample', direction = "vertical", side = "left". 
+        and create the createStep() with num = true, and a list of html collections specified above.
+      </div>
+      <div class='code'>
+        <span>const h5 = new History(2010, 2023, 800, 500, '.featureFiveExample', 'vertical', 'left')</span><br>
+        <span>h5.createStep(3, l)</span>
+      </div>
+      <div class='featureFiveExample'>
+      </div>
+    </div>
+    <div id='featureSix' class="feature">
+      <h2>createScroll()</h2>
+      <div class='description'>
+        The sixth example is to create a sidebar that lets the user easily direct to the content 
+        within the page. Use the function createScroll(num, list), where num is the number of points to 
+        direct within the page, and the list is a list of id that wish to direct to. Note that the 
+        num order and list order has to match. It has already been implemented as an example on the page. 
+        There is a fixed sidebar on the left side of the page where if you click on the first circle, 
+        it will direct you to where the first example is written, and the rest is also set accordingly. 
+        Note that the scroll function does not support direction = horizontal.
+      </div>
+      <h3>Code to create</h3><br>
+      <div class="description">Creating history object with starting year = 0, ending year = 1000, width = 180
+        height = 500, selector = '.scroll', direction = "vertical", side = "left". Note that since the 
+        scroll is intended for direct to different id's, so the it is useless to present the start year and 
+        end year. The function already omit out putting the values on to svg, putting any number in starting year
+        and ending year will not effect the appearance of the svg element.
+      </div>
+      <div class='code'>
+        <span>const sideScroll = new History(0, 1000, 180, 500, '.scroll',"vertical", 'left')</span><br>
+        <span>sideScroll.createScroll(7, ['#createObject', '#featureOne', '#featureTwo', "#featureThree", "#featureFour", "#featureFive", "#featureSix"])</span>
+      </div>
+      <div class='featureSixExample'>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

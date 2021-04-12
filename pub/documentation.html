@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>History.js</title>
+    <link rel="stylesheet" type="text/css" href="documentation.css">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+    <button class = "Back" onclick="location.href = 'index.html';">Back</button>
+    <div class= "body">
+        <h1>API Documentation</h1>
+        <h2>Getting Started</h2>
+        <p>First, need to include these tags in html file.</p>
+        <div class="code">
+            <span><</span>
+            <span>link rel="stylesheet" type="text/css" href="https://history-library.herokuapp.com/History.css"></span><br>
+            <span><</span>
+            <span>script type="text/javascript" src="https://history-library.herokuapp.com/History.js"></span>
+        </div>
+        <h2>Creating History Object</h2>
+        <p>
+            The History object takes in few arguments, which consists of startYear: An Integer which is the starting year values 
+            for the history object; endYear: An Integer which is the ending year values for the history object; width: An Integer 
+            which is the width of the whole history object element; height: An Integer which is the height of the whole history object element; 
+            selector: A class or id selector that the user want to append to; direction: A string which takes in 
+            values of either "horizontal" or "vertical". Indicating which direction that the user want the History object. 
+            side: A string which takes in values of either "both", "up", "down", "left", "right". Note that
+            if choesn direction as "horizontal", the side can only takes in "up", "down", or "both". If chosen "vertical",
+            the side can only takes in "left", "right", or "both". The side represents which side the element should be,
+            either left side of the svg object if chosen "left" or right side if the svg if chosen "right".
+        </p>
+        <div class="code">
+            <span>const h = new History(startYear, endYear, width, height, selector, direction, side)</span><br>
+            <span>const h = new History(2010, 2023, 400, 500, '.featureOneExampleLeft',"horizontal", 'both')</span>
+        </div>
+        <p>Then all the methods can be call via the object</p>
+        <div class="code">
+            <span>h.methodName(...)</span>
+        </div>
+        <h2>Methods Documentation</h2>
+        <div class="methods">
+            <div class="method">
+                <h3>1: createNonAnimatedClickHistory()</h3>
+                <div>
+                    <div class="methodHeader">Method Code:</div>
+                    <div class="code">
+                        <span>createNonAnimatedClickHistory(includeYear, events, barLength)</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="methodHeader">Description:</div>
+                    <div class="description">
+                        <p >
+                            createNonAnimatedClickHistory takes in three arguments, includeYear, events, and barLength. The 
+                            includeYear is a boolean value, indicating whether the user want to show the start year and end year
+                            on their History line. The input events is a list of events, in which every object in the list takes the 
+                            for of {year: ..., name: ..., description: ...}. The last input barLength indicate that how long the user
+                            want the bar that grow out of main line. Example is provided in Examples page. The method will create a 
+                            history time line that each time event is click to show, and the bar growing from the main line is not animated.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="methodHeader">Return Values:</div>
+                    <div class="returnValues">
+                        <p>
+                            createNonAnimatedClickHistory returns a svg element which contains the nessary components 
+                            to create the History such as Line, Circle, ForeignObject, Text, Button.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="method">
+                <h3>2: createNonAnimatedNonClickHistory()</h3>
+                <div>
+                    <div class="methodHeader">Method Code:</div>
+                    <div class="code">
+                        <span>createNonAnimatedNonClickHistory(includeYear, events, barLength)</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="methodHeader">Description:</div>
+                    <div class="description">
+                        <p >
+                            createNonAnimatedNonClickHistory takes in three arguments, includeYear, events, and barLength. The 
+                            includeYear is a boolean value, indicating whether the user want to show the start year and end year
+                            on their History line. The input events is a list of events, in which every object in the list takes the 
+                            for of {year: ..., name: ..., description: ...}. The last input barLength indicate that how long the user
+                            want the bar that grow out of main line. Example is provided in Examples page. The method will create a history 
+                            time line that each time event is not click to show, and also the bar growing out from the main line is not animated.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="methodHeader">Return Values:</div>
+                    <div class="returnValues">
+                        <p>
+                            createNonAnimatedNonClickHistory returns a svg element which contains the nessary components 
+                            to create the History such as Line, Circle, ForeignObject, Text, Button.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="method">
+                <h3>3: createAnimatedClickHistory()</h3>
+                <div>
+                    <div class="methodHeader">Method Code:</div>
+                    <div class="code">
+                        <span>createAnimatedClickHistory(includeYear, events, barLength)</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="methodHeader">Description:</div>
+                    <div class="description">
+                        <p >
+                            createAnimatedClickHistory takes in three arguments, includeYear, events, and barLength. The 
+                            includeYear is a boolean value, indicating whether the user want to show the start year and end year
+                            on their History line. The input events is a list of events, in which every object in the list takes the 
+                            for of {year: ..., name: ..., description: ...}. The last input barLength indicate that how long the user
+                            want the bar that grow out of main line. Example is provided in Examples page. The method will create a history 
+                            time line that each time event is click to show, and also the bar growing out from the main line is animated.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="methodHeader">Return Values:</div>
+                    <div class="returnValues">
+                        <p>
+                            createAnimatedClickHistory returns a svg element which contains the nessary components 
+                            to create the History such as Line, Circle, ForeignObject, Text, Button.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="method">
+                <h3>4: createAnimatedNonClickHistory()</h3>
+                <div>
+                    <div class="methodHeader">Method Code:</div>
+                    <div class="code">
+                        <span>createAnimatedNonClickHistory(includeYear, events, barLength)</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="methodHeader">Description:</div>
+                    <div class="description">
+                        <p >
+                            createAnimatedNonClickHistory takes in three arguments, includeYear, events, and barLength. The 
+                            includeYear is a boolean value, indicating whether the user want to show the start year and end year
+                            on their History line. The input events is a list of events, in which every object in the list takes the 
+                            for of {year: ..., name: ..., description: ...}. The last input barLength indicate that how long the user
+                            want the bar that grow out of main line. Example is provided in Examples page. The method will create a history 
+                            time line that each time event is not click to show, and also the bar growing out from the main line is animated.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="methodHeader">Return Values:</div>
+                    <div class="returnValues">
+                        <p>
+                            createAnimatedNonClickHistory returns a svg element which contains the nessary components 
+                            to create the History such as Line, Circle, ForeignObject, Text, Button.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="method">
+                <h3>5: createScroll()</h3>
+                <div>
+                    <div class="methodHeader">Method Code:</div>
+                    <div class="code">
+                        <span>createScroll(numSteps, idList)</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="methodHeader">Description:</div>
+                    <div class="description">
+                        <p >
+                            createScroll takes in two arguments, numSteps, and idList. The numSteps
+                            is an Integer values that represents the number of step point that the user
+                            want on their scroll bar. The idList is a list that its length is the same as the 
+                            numSteps and it contains the id that each step point will stop at. (Note that the 
+                            idList needs to be in the order that the user want to stop. For example, if user want 
+                            the first stop to be id #first, then the first element in the idList should be #first). 
+                            Examples is show in the examples page.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="methodHeader">Return Values:</div>
+                    <div class="returnValues">
+                        <p>
+                            createScroll returns a svg element which contains circles that equal to the numSteps.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="method">
+                <h3>6: createStep()</h3>
+                <div>
+                    <div class="methodHeader">Method Code:</div>
+                    <div class="code">
+                        <span>createStep(numSteps, htmlList)</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="methodHeader">Description:</div>
+                    <div class="description">
+                        <p >
+                            createStep takes in two arguments, numSteps, and htmlList. The numSteps represents the 
+                            number of the step that the user want the form to have. The htmlList is a list with each
+                            element represents a HTML collections. (Note that the list needs to have the order that 
+                            the user want. For example, by clicking the first step, it will show up the first HTML collections
+                            in the first index of the htmlList). Example is provided in the examples page.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="methodHeader">Return Values:</div>
+                    <div class="returnValues">
+                        <p>
+                            createStep returns a svg element which contains circles that equal to the numSteps. And numSteps of 
+                            ForeignObject element, in each element it will show up the corresponding htmlList's HTML collections.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+  </body>
+</html>

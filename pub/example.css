@@ -1,0 +1,82 @@
+body{
+    display: flex;
+    flex-direction: row;
+    background-color: #F0FFFF;
+}
+
+.Back{
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    background-color: transparent;
+    width: 80px;
+    height: 50px;
+    border: 3px solid black;
+}
+
+.scroll{
+    position: fixed;
+    width: 18%;
+    height: fit-content;
+    top: 110px;
+
+}
+
+h2{
+    color: rgb(150, 0, 99);
+    font-size: 25px;
+}
+
+.body{
+    position: absolute;
+    left: 20%;
+    width: 60%;
+    min-height: 100%;
+}
+
+h3{
+    margin-bottom: 0px;
+}
+
+.title{
+    margin-bottom: 80px;
+    font-size: 40px;
+}
+
+.description{
+    
+}
+
+.feature div{
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+
+
+.code{
+    background-color: #cce6ff;
+    padding: 10px;
+}
+
+.featureOneExample{
+    display: flex;
+    flex-direction: row;
+}
+
+.firstPageForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    justify-content: space-around;
+    height: 20%;
+}
+
+.firstPageForm button{
+    height: 20px;
+    width: 50px;
+}
+
+.featureThreeExample svg{
+    margin-bottom: 30px;
+}

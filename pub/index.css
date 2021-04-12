@@ -1,0 +1,35 @@
+body{
+    background-color: #F0FFFF;
+}
+
+h1{
+    font-size: 50px;
+    margin-top: 130px;
+}
+
+.body{
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
+
+.description{
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+a{
+    text-decoration: none;
+}
+
+.link{
+    width: 80px;
+    height: 40px;
+    border: 3px solid black;
+}

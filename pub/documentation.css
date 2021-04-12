@@ -1,0 +1,64 @@
+body{
+    background-color: #F0FFFF;
+}
+
+.body{
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.body:last-child{
+    margin-bottom: 50px;
+}
+
+.Back{
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    background-color: transparent;
+    width: 80px;
+    height: 50px;
+    border: 3px solid black;
+}
+
+h1{
+    font-size: 50px;
+}
+
+h2{
+    font-size: 35px;
+}
+
+h3{
+    color: rgb(150, 0, 99);
+    font-size: 25px;
+}
+
+p{
+    font-size: 20px;
+    word-break: break-word;
+}
+
+.code{
+    background-color: #cce6ff;
+    padding: 10px;
+    font-size: 20px;
+}
+
+
+
+.method div{
+    margin-top: 10px;
+    font-size: 20px;
+
+}
+
+.method div p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.methodHeader{
+    color: 	#A0522D	;
+}

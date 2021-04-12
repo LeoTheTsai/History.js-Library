@@ -1,0 +1,75 @@
+
+.Line{
+
+}
+
+.animatedLine {
+    animation: dash 2s linear forwards;
+  }
+  
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.notAnimatedOnClickEventName{
+  text-decoration: underline;
+  font-style: italic;
+  fill:blue;
+}
+
+.notAnimatedOnClickEventName:hover{
+  cursor: pointer;
+  fill: black
+  
+}
+.animatedOnClickEventName{
+  animation: appear 1.5s linear forwards;
+  text-decoration: underline;
+  font-style: italic;
+  fill:blue;
+}
+.animatedOnClickEventName:hover{
+  cursor: pointer;
+  fill:black;
+  text-decoration: underline;
+}
+
+.animatedNotOnClickEventName{
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.notAnimatedNotOnClickEventName{
+  text-decoration: underline;
+  font-style: italic;
+}
+
+
+@keyframes appear {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+foreignObject {
+  border:2px solid black; 
+  overflow:auto;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.popUpBoxName{
+  margin-top: 0px;
+}
+
+.popUpBoxBody{
+  font-size: 1em;
+}
